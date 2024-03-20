@@ -21,12 +21,14 @@ function App () {
   .then(data => {
     console.log(data.name);
     console.log( data.sprites.front_default);
+    let pokemonName=data.name;
+    let pokemonImage=data.sprites.front_default;
   })
   .catch(error => {
     console.error('Error:', error);
   });
-}
 
+  }
 
   
   
