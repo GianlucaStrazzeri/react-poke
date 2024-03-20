@@ -11,8 +11,24 @@ function App () {
   
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert(`nombre:${nombre}`);
-  };
+    let search=[]
+    search.push(nombre)
+    console.log("El pokemon seleccionado es: ",search)
+
+  const apiUrl = `https://pokeapi.co/api/v2/pokemon/${search}/`
+  fetch(apiUrl)
+  .then(response => response.json())
+  .then(data => {
+    console.log(data.name);
+    console.log( data.sprites.front_default);
+  })
+  .catch(error => {
+    console.error('Error:', error);
+  });
+}
+
+
+  
   
 
   return (
@@ -29,9 +45,9 @@ function App () {
           value={nombre}
           onChange={(e) => setNombre(e.target.value)}
         />
-        
         <button type="submit">Enviar</button>
       </form>
+      
   </>
   )
   
